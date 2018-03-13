@@ -1,19 +1,23 @@
+
 <!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<meta charset="UTF-8">
-		<title>Seriously.js</title>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Webcam by: Aahedi</title>
+<meta name='description' content='Tutorial, Tips and Trick Android Phone By Aahedi'>
+<meta name='author' content='Aahedi'>
 		<!--<script type="text/javascript" src="lib/webgl-debug.js"></script> -->
 		<script type="text/javascript" src="seriously.js"></script>
 		<script type="text/javascript" src="transforms/seriously.transform3d.js"></script>
-		<script type="text/javascript" src="effects/seriously.accumulator.js"></script>
+		<!--<script type="text/javascript" src="effects/seriously.accumulator.js"></script>
 		<script type="text/javascript" src="effects/seriously.ascii.js"></script>
-		<script type="text/javascript" src="effects/seriously.bleach-bypass.js"></script>
+		<script type="text/javascript" src="effects/seriously.bleach-bypass.js"></script>-->
 		<script type="text/javascript" src="effects/seriously.blend.js"></script>
-		<script type="text/javascript" src="effects/seriously.brightness-contrast.js"></script>
-		<script type="text/javascript" src="effects/seriously.checkerboard.js"></script>
+		<!--<script type="text/javascript" src="effects/seriously.brightness-contrast.js"></script>
+		<script type="text/javascript" src="effects/seriously.checkerboard.js"></script>-->
 		<script type="text/javascript" src="effects/seriously.chroma.js"></script>
-		<script type="text/javascript" src="effects/seriously.color.js"></script>
+		<!--<script type="text/javascript" src="effects/seriously.color.js"></script>
 		<script type="text/javascript" src="effects/seriously.colorcomplements.js"></script>
 		<script type="text/javascript" src="effects/seriously.color-select.js"></script>
 		<script type="text/javascript" src="effects/seriously.temperature.js"></script>
@@ -48,19 +52,17 @@
 		<script type="text/javascript" src="effects/seriously.tvglitch.js"></script>
 		<script type="text/javascript" src="effects/seriously.vibrance.js"></script>
 		<script type="text/javascript" src="effects/seriously.vignette.js"></script>
-		<script type="text/javascript" src="effects/seriously.split.js"></script>
+		<script type="text/javascript" src="effects/seriously.split.js"></script>-->
 		<style>
 
-		body {
-			background-color: #aaa;
-		}
+		html,body{margin:0;padding:0;width:100%;overflow:auto}
 
 		img, video {
 			display: none;
 		}
-
-		canvas {
-			border: black solid 1px;
+		canvas{
+		transform: scaleX(-1);
+		filter: contrast(125%) brightness(120%) blur(1px);
 		}
 
 		#transforms input[type=range] {
@@ -76,23 +78,25 @@
 		</style>
 	</head>
 	<body>
-		<button id="colorbutton">Color Bars</button>
+		<!--<button id="colorbutton">Color Bars</button>
 		<button id="camera">Camera</button>
-		<img id="colorbars" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAAClCAYAAAA3d5OIAAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH2gIPFxcpA4p/0AAAA2BJREFUeJzt2r9qVHkcxuHvmRyHhCASRcRStErnwnYWWdgljaX1doqCld5CRNhLELtd8AJs1sq5AmFTuMUqoiABXSZIxEgyzngDyWbI4vsrfJ72/HnPwHw4U0w3Go1m1cjz59drdfWfJtt/j8/XrdOPmmxXVfUvrtXk0r9Ntq/8caU2Hm402a6qGg9+qdPT/Sbb909cqyf7t5tsV1UNmi3Dd0hwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6C+rW1duPLyz/W4uK4yfbZ6akabTeZrqqqeycv17Phsybbf/2wVGujJtNVVbVy82IN3r9vsr2+PqzRjSbTVeUNB1GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgqO9PPm02PhuOa78/dejxy6sX6szK4cf/j+Xpcm1/Pv6/l7dejevNy3fHvv7DtGpx/9yxr/9P3bQ+94f/OXiws1MnNje/zfYcph8/1uzLlyPP67quBoP53gkLCwtznbe1tVWbDT97VxeuzpqtH+HPB3dq/eefWj/Gge7++luNfn/d+jEONBl8qrcrj1s/xqF2d3drNjv6a9f3fQ2Hw7nuubS0VF3XHXneZDKpvb29ue75LfhJCUGCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CvgJd+V3gFFLyFgAAAABJRU5ErkJggg=="/>
+		<!--<img id="colorbars" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAAClCAYAAAA3d5OIAAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH2gIPFxcpA4p/0AAAA2BJREFUeJzt2r9qVHkcxuHvmRyHhCASRcRStErnwnYWWdgljaX1doqCld5CRNhLELtd8AJs1sq5AmFTuMUqoiABXSZIxEgyzngDyWbI4vsrfJ72/HnPwHw4U0w3Go1m1cjz59drdfWfJtt/j8/XrdOPmmxXVfUvrtXk0r9Ntq/8caU2Hm402a6qGg9+qdPT/Sbb909cqyf7t5tsV1UNmi3Dd0hwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6C+rW1duPLyz/W4uK4yfbZ6akabTeZrqqqeycv17Phsybbf/2wVGujJtNVVbVy82IN3r9vsr2+PqzRjSbTVeUNB1GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgqO9PPm02PhuOa78/dejxy6sX6szK4cf/j+Xpcm1/Pv6/l7dejevNy3fHvv7DtGpx/9yxr/9P3bQ+94f/OXiws1MnNje/zfYcph8/1uzLlyPP67quBoP53gkLCwtznbe1tVWbDT97VxeuzpqtH+HPB3dq/eefWj/Gge7++luNfn/d+jEONBl8qrcrj1s/xqF2d3drNjv6a9f3fQ2Hw7nuubS0VF3XHXneZDKpvb29ue75LfhJCUGCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CBAdBgoMgwUGQ4CBIcBAkOAgSHAQJDoIEB0GCgyDBQZDgIEhwECQ4CBIcBAkOggQHQYKDIMFBkOAgSHAQJDgIEhwECQ6CvgJd+V3gFFLyFgAAAABJRU5ErkJggg=="/>-->
+		<div style="text-align:center;">
 		<img id="img"/>
 		<video id="video"></video>
-		<select id="effects">
-			<option value="">None</option>
+		<canvas id="canvas" width="960" height="540"></canvas><br/>
+		<select id="effects" size="2">
+			<!--<option value="chroma">None</option>-->
 		</select><br/>
 		<div id="options"></div>
-		<canvas id="canvas" width="960" height="540"></canvas>
 		<table id="transforms">
-			<tr><td><label for="rotate-x">Rotate X</label></td><td><input type="range" id="rotate-x" min="0" max="360" step="1" value="0"/></td></tr>
-			<tr><td><label for="rotate-y">Rotate Y</label></td><td><input type="range" id="rotate-y" min="0" max="360" step="1" value="0"/></td></tr>
+			<!--<tr><td><label for="rotate-x">Rotate X</label></td><td><input type="range" id="rotate-x" min="0" max="360" step="1" value="0"/></td></tr>
+			<tr><td><label for="rotate-y">Rotate Y</label></td><td><input type="range" id="rotate-y" min="0" max="360" step="1" value="0"/></td></tr>-->
 			<tr><td><label for="rotate-z">Rotate Z</label></td><td><input type="range" id="rotate-z" min="0" max="360" step="1" value="0"/></td></tr>
-			<tr><td><label for="translate-z">Translate Z</label></td><td><input type="range" id="translate-z" min="-40" max="90" step="1" value="0"/></td></tr>
-			<tr><td><label for="perspective">Perspective</label></td><td><input type="range" id="perspective" min="0" max="90" step="1" value="0"/></td></tr>
+			<!--<tr><td><label for="translate-z">Translate Z</label></td><td><input type="range" id="translate-z" min="-40" max="90" step="1" value="0"/></td></tr>
+			<tr><td><label for="perspective">Perspective</label></td><td><input type="range" id="perspective" min="0" max="90" step="1" value="0"/></td></tr>-->
 		</table>
+		</div>
 	<script type="text/javascript">
 
 	(function () {
@@ -134,7 +138,7 @@
 			sources = 0;
 
 			for (i in effect.inputs) {
-				if (effect.inputs[i].type === 'image') {
+				if (effect.inputs[i].type === 'video') {
 					sources++;
 					if (sources > 1) {
 						delete effects[e];
@@ -177,12 +181,12 @@
 				}
 			}
 
-			source.source = '#colorbars';
+			source.source = '#video';
 			source.width = 720;
 			source.height = 540;
 
 			transform2d.source = source;
-			transform2d.scale(0.2);
+			transform2d.scale(0.0); //mini
 			transform2d.translate(-260, -200);
 			//todo: translate to lower left corner
 
@@ -200,7 +204,7 @@
 				}
 			});
 
-			translateZ = document.getElementById('translate-z');
+		/*	translateZ = document.getElementById('translate-z');
 			translateZ.addEventListener('input', function () {
 				transform3d.translateZ = -parseFloat(this.value);
 			});
@@ -214,6 +218,8 @@
 			rotateY.addEventListener('input', function () {
 				transform3d.rotationY = parseFloat(this.value);
 			});
+			
+			*/
 
 			rotateZ = document.getElementById('rotate-z');
 			rotateZ.addEventListener('input', function () {
@@ -227,16 +233,16 @@
 			});
 			*/
 
-			document.getElementById('colorbutton').addEventListener('click', function() {
+			/*document.getElementById('colorbutton').addEventListener('click', function() {
 				video.pause();
 				if (webCamStream && webCamStream.stop) {
 					webCamStream.stop();
 				}
 				webCamStream = null;
-				source.source = '#colorbars';
+				source.source = '#video';
 				target.height = source.original.naturalHeight;
 				target.width = source.original.naturalWidth;
-			});
+			});*/
 
 			target.original.addEventListener('dragover', function(event) {
 				event.preventDefault();
@@ -289,15 +295,15 @@
 				return false;
 			}, true);
 
-			gUM && document.getElementById('camera').addEventListener('click', function () {
+		//	gUM && document.getElementById('camera').addEventListener('click', function () {
 				gUM.call(navigator, { video: true }, function(stream) {
 					function resize() {
 						target.height = video.videoHeight;
 						target.width = video.videoWidth;
 					}
 
-					if (window.webkitURL) {
-						video.src = window.webkitURL.createObjectURL(stream);
+					if (window.URL) {
+						video.src = window.URL.createObjectURL(stream);
 					} else {
 						video.src = stream;
 					}
@@ -314,9 +320,9 @@
 					console.log('getUserMedia failed');
 				});
 
-			});
+		//	});
 
-			select.addEventListener('change', function() {
+			window.addEventListener('load', function() {
 				function arrayToHex(color) {
 					var i, val, s = '#';
 					for (i = 0; i < 4; i++) {
@@ -342,7 +348,7 @@
 					inputs,
 					obj,
 					effectType,
-					name = this.value;
+					name = 'chroma';//this.value;
 
 				if (name && !effectObjects[name]) {
 					effectObjects[name] = obj = {
